@@ -237,7 +237,7 @@ class EmbeddingsProvider:
         
         device = device or self.device
 
-        token_ids = self.get_token_ids(texts, padding="max_length")
+        token_ids = self.get_token_ids(texts, padding="max_length", truncation_override=True)
         token_ids = torch.tensor(token_ids, dtype=torch.long).to(device)
 
         text_encoder_output = self.text_encoder(token_ids, attention_mask, return_dict=True)
